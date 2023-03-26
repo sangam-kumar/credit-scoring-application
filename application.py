@@ -25,33 +25,34 @@ model = pickle.load(open("final_model_credit_score_pred", "rb"))
 
 
 
-st.markdown("<h2 style='text-align:center; color:floralWhite;'> CREDIT SCORE USING MACHINE LEARNING", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align:center; color:floralWhite;'> CREDIT SCORE USING MACHINE LEARNING</h2>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns([1,8,1])
 
-try:
-    img1 = Image.open("image3.jpg")
+# try:
+#     img1 = Image.open("image3.jpg")
     
 
-    with col2:
-        st.image(img1, caption = "Credit Risk Analysis")
-        st.markdown('[PROJECT TARS](https://github.com/sangam-kumar)')
+#     with col2:
+#         st.image(img1, caption = "Credit Risk Analysis")
+#         st.markdown('[PROJECT TARS](https://github.com/sangam-kumar)')
 
 
-except:
-    components.html('''
-    <script>
-        alert("Image Not Loading")
-    </script>
-    ''')
-    st.text("Image Not Loading")
+# except:
+#     components.html('''
+#     <script>
+#         alert("Image Not Loading")
+#     </script>
+#     ''')
+#     st.text("Image Not Loading")
 
-else:
-    pass
+# else:
+#     pass
 
-finally:
-    pass
+# finally:
+#     pass
 
+# Creating side bar 
 st.sidebar.header("User input parameter")
 
 def user_input_data():
@@ -65,8 +66,8 @@ def user_input_data():
     Annual_Income = st.sidebar.slider('Annual_Income', 7000, 180000, 50505, 1)
     
     html_temp = """
-    <div style="background-color:teal;padding:1.5px">
-    <h1 style="color:black;text-align:center;">Single Customer </h1>
+    <div style="background-color:tomato;padding:1.5px">
+    <h1 style="color:white;text-align:center;">Single Customer </h1>
     </div><br>"""
     st.sidebar.markdown(html_temp,unsafe_allow_html=True)
     
@@ -96,11 +97,22 @@ with col1:
 with col2:
     for i in range(2): 
         st.markdown('#')
+    if st.button('Make Prediction'):   
+        sound = st.empty()
+        # assign for music sound
+        video_html = """
+            <iframe width="0" height="0" 
+            src="https://www.youtube-nocookie.com/embed/t3217H8JppI?rel=0&amp;autoplay=1&mute=0&start=2860&amp;end=2866&controls=0&showinfo=0" 
+            allow="autoplay;"></iframe>
+            """
+        sound.markdown(video_html, unsafe_allow_html=True)
+       
         cat = ['Credit_Mix']
         df[cat] = enc.transform(df[cat]) 
         prediction = model.predict(df)
         prediction = le.inverse_transform(prediction)[0]
 
-        time.sleep(3)  # wait for 2 seconds
+        time.sleep(3.7)  # wait for 2 seconds to finish the playing of the audio
+        sound.empty()  # optionally delete the element afterwards   
         
         st.success(f'Credit score probability is:&emsp;{prediction}')
