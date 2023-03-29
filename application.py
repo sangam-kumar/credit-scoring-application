@@ -30,7 +30,7 @@ st.markdown("<h2 style='text-align:center; color:floralWhite;'> CREDIT SCORE USI
 col1, col2, col3 = st.columns([1,8,1])
 
 try:
-    img1 = Image.open("image3.jpg")
+    img1 = Image.open("image.jpg")
     
 
     with col2:
