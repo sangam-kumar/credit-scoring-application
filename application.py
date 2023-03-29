@@ -36,6 +36,7 @@ try:
     with col2:
         st.image(img1, caption = "Credit Risk Analysis")
         st.markdown('[PROJECT TARS](https://github.com/sangam-kumar)')
+        st.markdown('[Under Esteemed Guidance of Prof. Dr. Ravichandran Sivaramakrishnan](https://github.com/sangam-kumar)')
 
 
 except:
