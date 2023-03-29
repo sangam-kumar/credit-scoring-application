@@ -29,45 +29,45 @@ st.markdown("<h2 style='text-align:center; color:floralWhite;'> CREDIT SCORE USI
 
 col1, col2, col3 = st.columns([1,8,1])
 
-# try:
-#     img1 = Image.open("image3.jpg")
+try:
+    img1 = Image.open("image3.jpg")
     
 
-#     with col2:
-#         st.image(img1, caption = "Credit Risk Analysis")
-#         st.markdown('[PROJECT TARS](https://github.com/sangam-kumar)')
+    with col2:
+        st.image(img1, caption = "Credit Risk Analysis")
+        st.markdown('[PROJECT TARS](https://github.com/sangam-kumar)')
 
 
-# except:
-#     components.html('''
-#     <script>
-#         alert("Image Not Loading")
-#     </script>
-#     ''')
-#     st.text("Image Not Loading")
+except:
+    components.html('''
+    <script>
+        alert("Image Not Loading")
+    </script>
+    ''')
+    st.text("Image Not Loading")
 
-# else:
-#     pass
+else:
+    pass
 
-# finally:
-#     pass
+finally:
+    pass
 
 # Creating side bar 
-st.sidebar.header("User input parameter")
+st.sidebar.header("ENTER YOUR DETAILS FOR SCORING")
 
 def user_input_data():
-    Credit_Mix = st.sidebar.selectbox('Credit_Mix:', ['Standard', 'Bad', 'Good'])
-    Interest_Rate = st.sidebar.slider('Interest_Rate', 1, 34, 14, 1)
-    Outstanding_Debt = st.sidebar.slider('Outstanding_Debt', 0, 5000, 1426, 1)
-    Delay_from_due_date = st.sidebar.slider('Delay_from_due_date', 0, 62, 21, 1)
-    Total_EMI_per_month = st.sidebar.slider('Total_EMI_per_month', 0, 2000, 107, 1)
-    Changed_Credit_Limit = st.sidebar.slider('Changed_Credit_Limit', 0, 30, 10, 1)
-    Monthly_Inhand_Salary = st.sidebar.slider('Monthly_Inhand_Salary', 303, 15000, 4197, 1)
-    Annual_Income = st.sidebar.slider('Annual_Income', 7000, 180000, 50505, 1)
+    Credit_Mix = st.sidebar.selectbox('Credit Mix:', ['Standard', 'Bad', 'Good'])
+    Interest_Rate = st.sidebar.slider('Interest Rate', 1, 34, 14, 1)
+    Outstanding_Debt = st.sidebar.slider('Outstanding Debt', 0, 5000, 1426, 1)
+    Delay_from_due_date = st.sidebar.slider('Delay from due date', 0, 62, 21, 1)
+    Total_EMI_per_month = st.sidebar.slider('Total EMI per month', 0, 2000, 107, 1)
+    Changed_Credit_Limit = st.sidebar.slider('Changed Credit Limit', 0, 30, 10, 1)
+    Monthly_Inhand_Salary = st.sidebar.slider('Monthly Inhand Salary', 303, 15000, 4197, 1)
+    Annual_Income = st.sidebar.slider('Annual Income', 7000, 180000, 50505, 1)
     
     html_temp = """
-    <div style="background-color:tomato;padding:1.5px">
-    <h1 style="color:white;text-align:center;">Single Customer </h1>
+    <div style="background-color:teal;padding:1.3px">
+    <h2 style="color:white;text-align:center;">Only for Educational Purposes</h1>
     </div><br>"""
     st.sidebar.markdown(html_temp,unsafe_allow_html=True)
     
@@ -112,7 +112,7 @@ with col2:
         prediction = model.predict(df)
         prediction = le.inverse_transform(prediction)[0]
 
-        time.sleep(3.7)  # wait for 2 seconds to finish the playing of the audio
+        time.sleep(3)  # wait for 2 seconds to finish the playing of the audio
         sound.empty()  # optionally delete the element afterwards   
         
-        st.success(f'Credit score probability is:&emsp;{prediction}')
+        st.success(f'Your Credit Score is :&emsp;{prediction}')
